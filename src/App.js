@@ -10,6 +10,7 @@ import LoginForm from "./components/loginForm";
 import RegisterForm from "./components/registerForm";
 import "./App.css";
 import Ogres from "./components/ogres";
+import OgreDetails from "./components/ogreDetails";
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
         <NavBar />
         <main className="container">
           <Switch>
+            <Route path="/ogres/:id" component={OgreDetails} />
             <Route path="/ogres" component={Ogres} />
             <Route path="/register" component={RegisterForm} />
             <Route path="/login" component={LoginForm} />

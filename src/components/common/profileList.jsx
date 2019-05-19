@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 const ProfileList = ({ data }) => {
   const style = {
     width: "100px",
@@ -7,7 +8,15 @@ const ProfileList = ({ data }) => {
     marginRight: "20px"
   };
   return (
-    <a href="#" className="list-group-item list-group-item-action">
+    <Link
+      to={{
+        pathname: `/ogres/${data.id}`,
+        state: {
+          data: data
+        }
+      }}
+      className="list-group-item list-group-item-action"
+    >
       <img
         style={style}
         src={data.thumbnail}
@@ -23,7 +32,7 @@ const ProfileList = ({ data }) => {
         risus varius blandit.
       </p>
       <small>Donec id elit non mi porta.</small>
-    </a>
+    </Link>
   );
 };
 

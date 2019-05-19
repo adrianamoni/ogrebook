@@ -7,13 +7,12 @@ class Ogres extends Component {
   state = {
     ogres: [],
     currentPage: 1,
-    pageSize: 10
+    pageSize: 50
   };
   async componentDidMount() {
     const { data: ogresRaw } = await Axios.get(
       "https://raw.githubusercontent.com/rrafols/mobile_test/master/data.json"
     );
-    console.log(ogresRaw.Brastlewark);
     const ogres = ogresRaw.Brastlewark;
     this.setState({ ogres });
   }
@@ -36,7 +35,9 @@ class Ogres extends Component {
     const { totalCount, data: ogres } = this.getPagedData();
     return (
       <div>
-        <h1>Ogres registered in Brastlewark</h1>
+        <div className="jumbotron">
+          <h1>Ogres in Brastlewark</h1>
+        </div>
         <div className="list-group mb-2">
           {ogres.map(ogre => (
             <ProfileList data={ogre} key={ogre.id} />
