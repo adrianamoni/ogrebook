@@ -9,6 +9,7 @@ import NavBar from "./components/navBar";
 import LoginForm from "./components/loginForm";
 import RegisterForm from "./components/registerForm";
 import "./App.css";
+import Ogres from "./components/ogres";
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
         <NavBar />
         <main className="container">
           <Switch>
+            <Route path="/ogres" component={Ogres} />
             <Route path="/register" component={RegisterForm} />
             <Route path="/login" component={LoginForm} />
             <Route path="/movies/:id" component={MovieForm} />
