@@ -25,7 +25,6 @@ const ProfileList = ({ data }) => {
       />
       <div className="d-flex justify-content-between">
         <h5 className="mb-1">{data.name}</h5>
-        <span className="badge badge-pill badge-success">Age: {data.age}</span>
       </div>
       <p className="mb-1">
         Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget
