@@ -69,6 +69,11 @@ class OgreDetails extends Component {
                   <td>{data.height}</td>
                   <td>{data.weight}</td>
                   <td>{data.hair_color}</td>
+                  <td>
+                    {data.hair_color === "Pink" || data.hair_color === "Red"
+                      ? "Female Ogre"
+                      : "Male Ogre"}
+                  </td>
                 </tr>
                 <tr />
               </tbody>
@@ -78,11 +83,15 @@ class OgreDetails extends Component {
             <div className="card-header">Professions</div>
             <div className="card-body">
               <h5>
-                {data.professions.map(profession => (
-                  <span className="badge badge-pill badge-success ml-3">
-                    {profession}
-                  </span>
-                ))}
+                {data.professions.length === 0 ? (
+                  <p>Unemployed :C</p>
+                ) : (
+                  data.professions.map(profession => (
+                    <span className="badge badge-pill badge-success ml-3">
+                      {profession}
+                    </span>
+                  ))
+                )}
               </h5>
             </div>
           </div>
