@@ -26,11 +26,30 @@ const ProfileList = ({ data }) => {
       <div className="d-flex justify-content-between">
         <h5 className="mb-1">{data.name}</h5>
       </div>
-      <p className="mb-1">
-        Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget
-        risus varius blandit.
-      </p>
-      <small>Donec id elit non mi porta.</small>
+      <ul className="list-group list-group-horizontal">
+        {data.professions.length > 2 ? (
+          <li class="list-group-item list-group-item-success mr-2">
+            Works a lot
+          </li>
+        ) : data.friends.length === 0 ? (
+          <li class="list-group-item list-group-item-danger mr-2">
+            Unemployed :C{" "}
+          </li>
+        ) : (
+          <li class="list-group-item list-group-item-secondary mr-2">
+            Lazy but get things done
+          </li>
+        )}
+        {data.friends.length > 1 ? (
+          <li class="list-group-item list-group-item-success">Friendly Ogre</li>
+        ) : data.friends.length === 0 ? (
+          <li class="list-group-item list-group-item-danger">Sociopath Ogre</li>
+        ) : (
+          <li class="list-group-item list-group-item-secondary">
+            Has few friends
+          </li>
+        )}
+      </ul>
     </Link>
   );
 };

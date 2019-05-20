@@ -36,9 +36,13 @@ class OgreDetails extends Component {
       objectFit: "cover",
       marginRight: "20px"
     };
+    const styleJumbotron = {
+      backgroundColor: "#5d7b49",
+      backgroundSize: "cover"
+    };
     return (
       <div className="container mb-3">
-        <div className="jumbotron">
+        <div className="jumbotron" style={styleJumbotron}>
           <img
             src={data.thumbnail}
             style={style}
