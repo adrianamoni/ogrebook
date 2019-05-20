@@ -43,6 +43,11 @@ class Ogres extends Component {
 
     return { totalCount: allOgres.length, data: ogres };
   };
+  resetOgresFilters = () => {
+    const resetOgres = this.state.maleOgres.concat(this.state.femaleOgres);
+    this.setState({ ogres: resetOgres, sortedOgre: "" });
+    console.log("Btn clicked");
+  };
 
   render() {
     const { pageSize, currentPage } = this.state;
@@ -81,7 +86,7 @@ class Ogres extends Component {
                 </span>
               </li>
               <li className="list-group-item d-flex justify-content-between align-items-center">
-                Female Ogres
+                Female Ogres (Not Working)
                 <span className="badge badge-primary badge-pill">
                   {this.state.femaleOgres.length}
                 </span>
@@ -95,22 +100,28 @@ class Ogres extends Component {
                 Filter By Friendliness
               </li>
               <li className="list-group-item d-flex justify-content-between align-items-center">
-                Very friendly Ogres
-                <span className="badge badge-primary badge-pill">14</span>
+                Very friendly Ogres (Not Working)
+                <span className="badge badge-primary badge-pill">
+                  Random Number
+                </span>
               </li>
               <li className="list-group-item d-flex justify-content-between align-items-center">
-                Lonely Ogres
-                <span className="badge badge-primary badge-pill">2</span>
+                Lonely Ogres (Not Working)
+                <span className="badge badge-primary badge-pill">
+                  Random Number
+                </span>
               </li>
             </ul>
             <button
               type="button"
               className="btn btn-primary btn-lg btn-block mt-3"
+              onClick={this.resetOgresFilters}
             >
               Reset Filters
             </button>
           </div>
           <div className="col-8">
+            <h4>Showing {this.state.ogres.length} Ogres in the Database</h4>
             <div className="list-group mb-2" style={styleScroll}>
               {ogres.map(ogre => (
                 <ProfileList data={ogre} key={ogre.id} />
