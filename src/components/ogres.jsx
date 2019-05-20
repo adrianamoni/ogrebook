@@ -9,7 +9,8 @@ class Ogres extends Component {
     currentPage: 1,
     pageSize: 50,
     maleOgres: 0,
-    femaleOgres: 0
+    femaleOgres: 0,
+    sortedOgre: ""
   };
   async componentDidMount() {
     const { data: ogresRaw } = await Axios.get(
@@ -25,13 +26,14 @@ class Ogres extends Component {
     );
     this.setState({ maleOgres, femaleOgres });
   }
-
   handlePageChange = page => {
     this.setState({ currentPage: page });
   };
   handleOgreSelect = () => {
-    // this.setState({ selectedOgres: true, currentPage: 1 });
-    console.log("Selected Males");
+    const sortedMaleOgres = this.state.ogres.filter(
+      o => o.hair_color !== "Pink" && o.hair_color !== "Red"
+    );
+    this.setState({ ogres: sortedMaleOgres, sortedOgre: "maleOgresOnly" });
   };
 
   getPagedData = () => {
@@ -68,7 +70,12 @@ class Ogres extends Component {
                 className="list-group-item d-flex justify-content-between align-items-center"
                 onClick={this.handleOgreSelect}
               >
-                Male Ogres
+                {this.state.sortedOgre === "maleOgresOnly" ? (
+                  <strong>Male Ogres</strong>
+                ) : (
+                  <span>Male Ogres</span>
+                )}
+
                 <span className="badge badge-primary badge-pill">
                   {this.state.maleOgres.length}
                 </span>
@@ -96,6 +103,12 @@ class Ogres extends Component {
                 <span className="badge badge-primary badge-pill">2</span>
               </li>
             </ul>
+            <button
+              type="button"
+              className="btn btn-primary btn-lg btn-block mt-3"
+            >
+              Reset Filters
+            </button>
           </div>
           <div className="col-8">
             <div className="list-group mb-2" style={styleScroll}>
